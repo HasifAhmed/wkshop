@@ -15,14 +15,15 @@ function changeShape() {
 }
 
 function Draw(ev){
+  
   if (shape == "rect"){
     ctx.fillRect(ev.offsetX , ev.offsetY, 100, 200);
   }
   else if(shape == "dot"){
-    ctx.beginPath();
+    ctx.beginPath(); //resets or else ellipses are connected
     ctx.ellipse(ev.offsetX , ev.offsetY,  10, 10,0,0,7);
-    ctx.stroke();
-    ctx.fill();
+    ctx.stroke(); //the outside ring
+    ctx.fill(); //inside fill up
   }
 }
 
