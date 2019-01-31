@@ -4,10 +4,10 @@
     #slate {border: 1px solid black }
   </style>
   <h1> Welcome to Hasif's Canvas! </h1>
-  <button id ="Toggle"> Draw-A-Rectangle </button>
-  <button id ="Clear"> Clear Cavnas </button>
+  <button onclick="changeShape()"id ="Toggle"> Change Shape </button>
+  <button onclick = "clearCanvas()" id ="Clear"> Clear Cavnas </button>
   <div>
-    <canvas height = "500" width = "500" id = "slate" >
+    <canvas height = "500" width = "500" id = "slate" onclick = "Draw(event)" >
       Hasif's Canvas
     </canvas>
   </div>

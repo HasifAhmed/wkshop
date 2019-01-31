@@ -1,28 +1,32 @@
 //retrieve node in DOM via ID
+var shape = "rect";
 var c = document.getElementById("slate");
 //instantiate a CanvasRenderingContext2D
 var ctx = c.getContext("2d");
 //invoke interface methods
-document.getElementById("Toggle").addEventListener("click", function() {
-  if (document.getElementById("Toggle").innerHTML =="Draw-A-Rectangle"){
-    document.getElementById("Toggle").innerHTML = "Draw-A-Dot";
+function changeShape() {
+  if (shape == "rect"){
+    shape = "dot";
   }
   else
   {
-    document.getElementById("Toggle").innerHTML = "Draw-A-Rectangle";
+    shape = "rect"
   }
-});
+}
 
-document.getElementById("slate").addEventListener("click", function(ev) {
-  if (document.getElementById("Toggle").innerHTML =="Draw-A-Rectangle"){
-    ctx.fillRect(ev.clientX - c.offsetLeft, ev.clientY - c.offsetTop, 100, 200);
+function Draw(ev){
+  if (shape == "rect"){
+    ctx.fillRect(ev.offsetX , ev.offsetY, 100, 200);
   }
-  else if(document.getElementById("Toggle").innerHTML == "Draw-A-Dot"){
-    ctx.fillRect(ev.clientX - c.offsetLeft, ev.clientY - c.offsetTop, 5, 5);
+  else if(shape == "dot"){
+    ctx.beginPath();
+    ctx.ellipse(ev.offsetX , ev.offsetY,  10, 10,0,0,7);
+    ctx.stroke();
+    ctx.fill();
   }
-});
+}
 
-document.getElementById("Clear").addEventListener("click", function() {
+function clearCanvas() {
   ctx.clearRect(0, 0, c.width, c.height); //clear rectangle
 
-});
+}
