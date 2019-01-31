@@ -26,7 +26,7 @@ Create JS file
 Link your JS file to the HTML file from yesterday with the following command:
   <script src="JSfile"></script>
 
-Try the following:
+Try the following inside your JS file and see what it outputs to:
 
 //retrieve node in DOM via ID
 > var c = document.getElementById("slate")
@@ -54,8 +54,8 @@ clearRect()
 fillText
 ellipse()
 
-bookmark:
+Bookmark:
 developer.mozilla.org
 en-US/docs/Web/API/Canvas_API
 
-Assignment on assignments page- check QAF
+Assignment on assignments page- check QAF for link
