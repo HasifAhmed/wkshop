@@ -1,0 +1,37 @@
+Paths used to draw arbitrary shapes, including circles and curves
+- A context can keep track of one path at a time.
+- Path is not drawn until stroke() is called
+- A path is considered done when beginPath() is called anew
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- beginPath()
+starts or resets current Path
+- stroke()
+renders all the lines in the path, does not end the path.
+- fill()
+Fills the interior of the path,
+Will not work if the path has fewer than 3 points in it.
+- arc()
+Draws an arc
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Useful JS commands:
+- moveTo(x, y)
+Moves path to position (x,y)
+Does not result in a line or a filled in section
+- lineTo(x, y)
+Moves path to position (x,y)
+will result in a line and a filled in section
+- closePath()
+Results in a line from current position to start position
+Path can be continued after
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Task:
+index.html w/ 1 canvas and 1 clear button
+dotconn.js
+Draws a connected series of dots by adding
+1 dot per user click (at click location)
+
+Canvas ID: "playground"
+Button ID: "clear"
+
+Challenge: connect centers, red circles, black lines borders?
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

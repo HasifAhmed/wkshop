@@ -1,25 +1,24 @@
+//Team Terrible Trio -- Hasif Ahmed, Raunak Chowdhury, Ryan Aday
+//SoftDev2 pd8
+//K2 -- Connecting the Dots
+//2019-02-04
+
 //retrieve node in DOM via ID
-var shape = "rect";
+var rect = true;
 var c = document.getElementById("slate");
 //instantiate a CanvasRenderingContext2D
 var ctx = c.getContext("2d");
 //invoke interface methods
 function changeShape() {
-  if (shape == "rect"){
-    shape = "dot";
-  }
-  else
-  {
-    shape = "rect"
-  }
+  rect = !rect;
 }
 
 function Draw(ev){
 
-  if (shape == "rect"){
+  if (rect){
     ctx.fillRect(ev.offsetX , ev.offsetY, 100, 200);
   }
-  else if(shape == "dot"){
+  else if(!rect){
     ctx.beginPath(); //resets or else ellipses are connected
     ctx.ellipse(ev.offsetX , ev.offsetY,  10, 10,0,0,7);
     ctx.stroke(); //the outside ring
