@@ -15,7 +15,7 @@ function changeShape() {
 }
 
 function Draw(ev){
-  
+
   if (shape == "rect"){
     ctx.fillRect(ev.offsetX , ev.offsetY, 100, 200);
   }
@@ -31,3 +31,10 @@ function clearCanvas() {
   ctx.clearRect(0, 0, c.width, c.height); //clear rectangle
 
 }
+/*
+e.preventDefault(); - prevents event function from executing it's default operation
+ctx.beginPath(); - when ellipses are drawn they are connected and act as vertices to a bigger shape, therefore this command resets that aspect and so everytime this command is used the
+next drawn ellipses is not connected to any of the previously drawn ones
+e.offsetX - x-coordinate of mouse pointer when an event is triggered within the canvas
+e.offsetY - y-coordinate of mouse pointer when an event is triggered within the canvas
+*/
