@@ -11,12 +11,44 @@ var stopButton  = document.getElementById("stop");
 
 var dotButton = document.getElementById("circle");
 
+var dvdButton = document.getElementById("dvd");
 
+/* image code !!!
+var logo = new Image();
+logo.src = "logo_dvd.jpg";
+ctx.drawImage();
+  */
 var growing = true;
 
 var requestID;
 
 var radius = 1;
+
+
+var dvdLogoSetup = function(){
+
+  window.cancelAnimationFrame( requestID );
+
+  var rectWidth = 100;
+  var rectHeight = 50;
+
+  var rectX = Math.floor( Math.random() * (c.width - rectWidth) );
+
+  var xVel = 1;
+  var yVel = 1;
+
+  var logo = new Image();
+  logo.src = "logo_dvd.jpg";
+
+  var dvdLogo = function() {
+      ctx.clearRect(0, 0, c.width, c.height);
+      ctx.drawImage(dvdButton, 0,0);
+
+      requestID = window.requestAnimationframe(dvdLogo);
+
+  };
+  dvdLogo();
+};
 
 var draw = function(e){
     if (requestID == null)
@@ -47,7 +79,7 @@ var drawDot = function() {
 	ctx.fill();
 	requestID = window.requestAnimationFrame(drawDot);
 
-  
+
 }
 
 var stopIt = function() {
@@ -65,5 +97,6 @@ var stopIt = function() {
 
 }
 
+dvdButton.addEventListener("click", dvdLogoSetup );
 dotButton.addEventListener("click", draw);
 stopButton.addEventListener("click", stopIt);
