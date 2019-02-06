@@ -10,18 +10,18 @@ var dotButton = document.getElementById("circle");
 
 var growing = true;
 
-var requestID = false;
+var requestID;
 
-var radius = 10;
+var radius = 1;
 
 var drawDot = function() {
-    if(requestID){
-	    stopIt();
-    }
-	clear;
-	ctx.fillStyle = "#00FFFF";
-	ctx.beginPath();
-	if(radius==0 || radius==c.height/2 || radius==c.width/2){
+    if (requestID != null)
+	{
+		e.preventDefault();
+		console.log("Animation Ocurring!");
+	}
+	else {
+	if(radius>=c.width/2 || radius <= 0){
 		growing=!growing;
 	}
 	if( growing ) {
@@ -29,19 +29,30 @@ var drawDot = function() {
 	} else {
 		radius -= 1;
 	}
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.fillStyle = "#00FFFF";
+	ctx.beginPath();
 	window.requestAnimationFrame();
-	ctx.arc( c.width / 2, c.height / 2, radius,  0, 2*Math.PI);
+	ctx.ellipse(c.width / 2, c.height / 2, radius, radius, 0, 0, 2 * Math.PI);
 	ctx.stroke();
 	ctx.fill();
 	requestID = window.requestAnimationFrame(drawDot);
-	
+	}
 
 }
 
 var stopIt = function() {
-    console.log( requestID );
-    window.cancelAnimationFrame(requestID);
-    requestID=false;
+    if (requestID == null)
+	{
+		e.preventDefault();																//prevents default action of the stop mechanism from running
+		console.log("Shouldn't do anything");			
+	}
+	else
+	{
+		console.log("request ID:" + requestID );		
+		window.cancelAnimationFrame(requestID);											//cancels the animation frame
+		requestID = null;																//resets value of requestID to null
+	}
     
 }
 
