@@ -1,7 +1,7 @@
-//Hasif Ahmed
+//Tomato - Hasif Ahmed, Tania Cao
 //SoftDev pd8
-//K3 -- They lock us in the tower whenever we get caught
-//2019-02-06
+//K4 -- What is it saving the screen from?
+//2019-02-07
 var c = document.getElementById("playground");
 var ctx = c.getContext("2d");
 
@@ -33,6 +33,7 @@ var dvdLogoSetup = function(){
   var rectHeight = 50;
 
   var rectX = Math.floor( Math.random() * (c.width - rectWidth) );
+  var rectY = Math.floor(Math.random() * (c.height - rectHeight) );
 
   var xVel = 1;
   var yVel = 1;
@@ -41,10 +42,21 @@ var dvdLogoSetup = function(){
   logo.src = "logo_dvd.jpg";
 
   var dvdLogo = function() {
-      ctx.clearRect(0, 0, c.width, c.height);
-      ctx.drawImage(dvdButton, 0,0);
+    window.cancelAnimationFrame(requestID);
 
-      requestID = window.requestAnimationframe(dvdLogo);
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    //if outside range reverse appropritately 
+    if (rectX <= 0 || rectX >= c.width - rectWidth) {
+      xVel *= -1;
+    }
+    if (rectY <= 0 || rectY >= c.height - rectHeight) {
+      yVel *= -1;
+    }
+    rectX += xVel;
+    rectY += yVel;
+    ctx.drawImage(logo, rectX, rectY, rectWidth, rectHeight);
+    requestID = window.requestAnimationFrame(dvdLogo);
 
   };
   dvdLogo();
@@ -85,14 +97,14 @@ var drawDot = function() {
 var stopIt = function() {
     if (requestID == null)
 	{
-		e.preventDefault();																//prevents default action of the stop mechanism from running
+		e.preventDefault();																//prevents default action
 		console.log("Shouldn't do anything");
 	}
 	else
 	{
 		console.log("request ID:" + requestID );
-		window.cancelAnimationFrame(requestID);											//cancels the animation frame
-		requestID = null;																//resets value of requestID to null
+		window.cancelAnimationFrame(requestID);											//cancels animation frame
+		requestID = null;																//resets requestID -> null
 	}
 
 }
