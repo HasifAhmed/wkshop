@@ -21,7 +21,7 @@ ctx.drawImage();
 var growing = true;
 
 var requestID;
-
+ctx.fillStyle = "#00FFFF";
 var radius = 1;
 
 
@@ -46,7 +46,7 @@ var dvdLogoSetup = function(){
 
     ctx.clearRect(0, 0, c.width, c.height);
 
-    //if outside range reverse appropritately 
+    //if outside range reverse appropritately
     if (rectX <= 0 || rectX >= c.width - rectWidth) {
       xVel *= -1;
     }
@@ -62,18 +62,10 @@ var dvdLogoSetup = function(){
   dvdLogo();
 };
 
-var draw = function(e){
-    if (requestID == null)
-    {
-      drawDot();
-    }
-    else
-    {
-      e.preventDefault();
-      console.log("Nope");																//resets value of requestID to null
-    }
-}
+
 var drawDot = function() {
+  window.cancelAnimationFrame(requestID);
+  ctx.clearRect(0,0, c.width, c.height);
 
 	if(radius>=c.width/2 || radius <= 0){
 		growing=!growing;
@@ -83,8 +75,9 @@ var drawDot = function() {
 	} else {
 		radius -= 1;
 	}
-	ctx.clearRect(0, 0, c.width, c.height);
-	ctx.fillStyle = "#00FFFF";
+
+
+
 	ctx.beginPath();
 	ctx.ellipse(c.width / 2, c.height / 2, radius, radius, 0, 0, 2 * Math.PI);
 	ctx.stroke();
@@ -110,5 +103,5 @@ var stopIt = function() {
 }
 
 dvdButton.addEventListener("click", dvdLogoSetup );
-dotButton.addEventListener("click", draw);
+dotButton.addEventListener("click", drawDot);
 stopButton.addEventListener("click", stopIt);
