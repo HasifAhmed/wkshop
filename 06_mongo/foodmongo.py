@@ -30,8 +30,7 @@ def by_score_threshold(score):
         pprint.pprint(doc)
         print('\n')
 
-def by_zip_and_score(zipcode, score): 
-    for doc in collection.find({"$and":[{"address.zipcode":zipcode}, {"grades.score":{"$lt":score}} ]
-
-        
-    print('\n')
+def by_cui_and_street(cuisine, street): 
+    for doc in collection.find( { '$and': [ {"cuisine": cuisine}, {"address.street": street} ] } ):
+        pprint.pprint(doc)
+        print('\n')
