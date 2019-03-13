@@ -45,7 +45,12 @@ var drawDot = function(e){
 
 var clear = function(){
   //reloads page - resets the board
-  location.reload();
+  while (pic.hasChildNodes()){
+		pic.removeChild(pic.lastChild)
+		oldX=undefined;
+		oldY=undefined;
+  }
+  previous = 0;
 };
 
 pic.addEventListener("click",drawDot);
