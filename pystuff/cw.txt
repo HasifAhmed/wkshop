@@ -2,3 +2,18 @@ list comprehension: consists of brackets containing an expression followed by a 
 then zero ore more for or if clauses
 
 result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it.
+
+[x for x in range(8) ]
+
+[x*x for x in range(8) ]
+
+tuple -> immutable list
+
+[ (x, x*x, x*x*x)
+  for x in range(8) ]
+returning multiple values as the result
+
+uc_letters = alphabet in caps
+[ x for x in p if x in uc_letters ]
+[1 for x in p if x in uc_letters ]
+[1 for x in uc_letters ekse 0 for x in p]
