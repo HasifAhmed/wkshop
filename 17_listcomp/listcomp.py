@@ -37,7 +37,11 @@ def third(l):
     return ret
 
 def thirdLis(l):
-    ret = []
+    a1 = [0 for x in range(l)]
+    a2 = [x for x in range(l)]
+    a3 = [2 * x for x in range(l)]
+    return a1 + a2 + a3
+
 
 def fourth():
     ret = []
@@ -46,7 +50,7 @@ def fourth():
     for i in range(100):
         for x in nums:
             if i in notprime:
-                break 
+                break
             if i % x == 0:
                 ret.append(i)
                 break
@@ -54,7 +58,7 @@ def fourth():
 
 def fourthLis():
     ret = [i for i in range(100) for x in [2, 3, 4, 5, 6, 7, 8, 9] if i % x == 0 and i not in [0, 2, 3, 5, 7]]
-    return list(set(ret)) 
+    return list(set(ret))
 
 def fifth():
     ret, state = [], True
@@ -63,7 +67,7 @@ def fifth():
         for x in range(2, i):
             if i % x == 0:
                 state = False
-                break 
+                break
         if state: ret.append(i)
     return ret
 
@@ -78,8 +82,8 @@ def sixth(l):
     return ret
 
 def sixthLis(l):
-    ret = [i for i in range(1, l + 1) if l % i == 0]
-    return ret
+    return [i for i in range(1, l + 1) if l % i == 0]
+
 
 def seventh(l):
     ret = []
@@ -91,9 +95,9 @@ def seventh(l):
     return ret
 
 def seventhLis(l):
-    ret = [[l[x][i] for x in range(len(l))] for i in range(len(l[0]))]
-    return ret
-    
+    return  [[l[x][i] for x in range(len(l))] for i in range(len(l[0]))]
+
+
 print(first(5))
 print(firstLis(5))
 print(second(5))
