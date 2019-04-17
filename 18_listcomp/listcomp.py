@@ -10,9 +10,9 @@ def triples(n):
 
 def quicksort(list):
     pivot = list[0]
-    lesser = quicksort([x for x in list[1:] if x < pivot])
-    greater = quicksort([x for x in list[1:] if x >= pivot])
-    return lesser + [pivot] + greater
+    small = quicksort([x for x in list[1:] if x < pivot])
+    big = quicksort([x for x in list[1:] if x >= pivot])
+    return small + [pivot] + big
 
 
 triples(17)
